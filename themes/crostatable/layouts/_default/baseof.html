@@ -12,9 +12,13 @@
 </head>
 <body class="t-crostatable">
   {{ partial "header.html" . }}
+  {{ partial "cr_banner.html" . }}
   <main class="wrap">
     {{ block "main" . }}{{ end }}
   </main>
+  {{ partial "cr_band.html" . }}
   {{ partial "footer.html" . }}
+  {{ partial "cr_fab.html" . }}
+  <script src="{{ "anim.js" | relURL }}" defer></script>
 </body>
 </html>

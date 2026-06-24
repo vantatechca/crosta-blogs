@@ -1,0 +1,12 @@
+{{ $home := .IsHome }}
+<section class="cr-banner{{ if not $home }} cr-banner--slim{{ end }}" data-no-reveal>
+  <div class="cr-banner__media">
+    {{ with .Site.Params.bannerImage }}<img class="cr-banner__img" src="{{ . | relURL }}" alt="">{{ end }}
+    {{ if not .Site.Params.bannerImage }}<span class="cr-banner__ph">Banner placeholder · set params.bannerImage</span>{{ end }}
+  </div>
+  <div class="cr-banner__inner">
+    <p class="cr-banner__eyebrow">{{ .Site.Params.brand }}</p>
+    <h2 class="cr-banner__title">{{ .Site.Params.tagline }}</h2>
+    <a class="cr-cta cr-cta--hero" href="{{ .Site.Params.brandURL }}" target="_blank" rel="noopener">Check us out <span aria-hidden="true">&#8599;</span></a>
+  </div>
+</section>

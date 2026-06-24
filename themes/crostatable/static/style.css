@@ -44,3 +44,75 @@ a{color:inherit}
 .archive__date{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .archive__sum{color:var(--soft);font-style:italic;margin:.3em 0 0}
 @media(max-width:560px){.ct-item__t{white-space:normal}.ct-item__dots{display:none}}
+
+
+/* ===== Crosta shared layer: tokens ===== */
+:root{--cr-display:"Cormorant Garamond",serif;--cr-cta:#a9853f;--cr-cta-ink:#f4efe4;--cr-cta-radius:2px;--cr-grad:linear-gradient(135deg,#f4efe4 0%,#e6d7bd 55%,#cdae74 100%);--cr-banner-ink:#2c2017;--cr-shade:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.07));}
+
+/* ===== Crosta shared layer: banner + CTA + motion ===== */
+html{scroll-behavior:smooth}
+
+/* hero banner (full-bleed, sits between header and content) */
+.cr-banner{position:relative;overflow:hidden;isolation:isolate}
+.cr-banner__media{position:absolute;inset:-2px;z-index:-2;background:var(--cr-grad);will-change:transform}
+.cr-banner__img{width:100%;height:100%;object-fit:cover;display:block}
+.cr-banner::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--cr-shade)}
+.cr-banner__ph{position:absolute;right:14px;bottom:12px;z-index:0;font:600 11px/1 system-ui,sans-serif;
+ letter-spacing:.05em;color:var(--cr-banner-ink);opacity:.55;background:rgba(0,0,0,.16);padding:6px 10px;border-radius:5px}
+.cr-banner__inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:clamp(46px,8vw,96px) 28px;
+ min-height:clamp(330px,46vh,520px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;color:var(--cr-banner-ink)}
+.cr-banner--slim .cr-banner__inner{min-height:clamp(140px,22vh,200px);padding:30px 28px}
+.cr-banner__eyebrow{font-family:var(--cr-display);text-transform:uppercase;letter-spacing:.22em;font-size:13px;
+ font-weight:600;margin:0 0 16px;opacity:.9}
+.cr-banner__title{font-family:var(--cr-display);font-weight:700;font-size:clamp(30px,5.4vw,62px);line-height:1.04;
+ letter-spacing:-.01em;margin:0 0 28px;max-width:20ch;text-wrap:balance}
+.cr-banner--slim .cr-banner__title{font-size:clamp(22px,3.4vw,36px);margin:0}
+.cr-banner--slim .cr-cta{margin-top:16px}
+
+/* CTA button (themed) */
+.cr-cta{display:inline-flex;align-items:center;gap:.5em;background:var(--cr-cta);color:var(--cr-cta-ink);
+ font-family:var(--cr-display);font-weight:600;font-size:16px;letter-spacing:.01em;text-decoration:none;
+ padding:14px 28px;border-radius:var(--cr-cta-radius);box-shadow:0 8px 22px -10px rgba(0,0,0,.55);
+ transition:transform .22s cubic-bezier(.22,.61,.36,1),box-shadow .22s,filter .22s}
+.cr-cta span{transition:transform .22s cubic-bezier(.22,.61,.36,1)}
+.cr-cta:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 14px 30px -12px rgba(0,0,0,.6)}
+.cr-cta:hover span{transform:translate(3px,-3px)}
+.cr-cta:focus-visible{outline:3px solid var(--cr-cta);outline-offset:3px}
+
+/* floating CTA */
+.cr-fab{position:fixed;right:20px;bottom:20px;z-index:60;display:inline-flex;align-items:center;gap:.5em;
+ background:var(--cr-cta);color:var(--cr-cta-ink);font-family:var(--cr-display);font-weight:600;font-size:14px;
+ text-decoration:none;padding:12px 20px;border-radius:var(--cr-cta-radius);box-shadow:0 10px 30px -8px rgba(0,0,0,.5);
+ transition:transform .22s cubic-bezier(.22,.61,.36,1),box-shadow .22s,filter .22s}
+.cr-fab span{transition:transform .22s}
+.cr-fab:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.cr-fab:hover span{transform:translate(3px,-3px)}
+.cr-fab:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
+/* closing CTA band */
+.cr-band{background:var(--cr-cta)}
+.cr-band__inner{max-width:1100px;margin:0 auto;padding:clamp(40px,6vw,64px) 28px;display:flex;align-items:center;
+ justify-content:space-between;gap:22px;flex-wrap:wrap}
+.cr-band__t{font-family:var(--cr-display);font-weight:700;color:var(--cr-cta-ink);font-size:clamp(24px,4vw,42px);
+ line-height:1.05;margin:0;text-wrap:balance}
+.cr-cta--band{background:var(--cr-cta-ink);color:var(--cr-cta);box-shadow:0 8px 22px -10px rgba(0,0,0,.4)}
+
+/* link hover on listing/article titles -> theme CTA hue */
+main.wrap h2 a,main.wrap h3 a{transition:color .2s ease}
+main.wrap h2 a:hover,main.wrap h3 a:hover{color:var(--cr-cta)}
+
+/* ===== motion (only under html.anim, i.e. JS on + motion allowed) ===== */
+html.anim .reveal{opacity:0;transform:translateY(26px);
+ transition:opacity .7s ease,transform .75s cubic-bezier(.22,.61,.36,1)}
+html.anim .reveal.in{opacity:1;transform:none}
+html.anim .cr-banner__inner{opacity:0;transform:translateY(16px)}
+html.anim .cr-banner__inner.in{opacity:1;transform:none;
+ transition:opacity .8s .05s ease,transform .85s .05s cubic-bezier(.22,.61,.36,1)}
+html.anim .cr-fab{opacity:0;transform:translateY(10px) scale(.96)}
+html.anim .cr-fab.show{opacity:1;transform:none;transition:opacity .5s ease,transform .5s cubic-bezier(.22,.61,.36,1)}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .cr-cta,.cr-cta span,.cr-fab,.cr-fab span{transition:none}
+}
+@media (max-width:560px){ .cr-fab{right:14px;bottom:14px;padding:11px 16px;font-size:13px} }
