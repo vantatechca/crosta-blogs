@@ -1,0 +1,19 @@
+baseURL = "https://notesfromthepass.com/"
+languageCode = "en-us"
+title = "Notes from the Pass"
+theme = "notespass"
+themesDir = "../../themes"
+paginate = 8
+enableRobotsTXT = true
+
+[params]
+  tagline = "Working notes from the line — straight off the pass."
+  brand = "Pizzeria Crosta"
+  brandURL = "https://pizzeriacrosta.com/"
+  description = "Working notes from the line — straight off the pass."
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  tag = "tags"

@@ -1,0 +1,19 @@
+baseURL = "https://thecrostajournal.com/"
+languageCode = "en-us"
+title = "The Crosta Journal"
+theme = "journal"
+themesDir = "../../themes"
+paginate = 8
+enableRobotsTXT = true
+
+[params]
+  tagline = "Long-form writing on dough, fire, and the craft of Neapolitan pizza."
+  brand = "Pizzeria Crosta"
+  brandURL = "https://pizzeriacrosta.com/"
+  description = "Long-form writing on dough, fire, and the craft of Neapolitan pizza."
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  tag = "tags"

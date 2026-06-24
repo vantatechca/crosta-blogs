@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post__head">
+    <p class="post__eyebrow">{{ range .Params.tags }}<span>#{{ . }}</span> {{ end }}</p>
+    <h1 class="post__title">{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="post__dek">{{ . }}</p>{{ end }}
+    <p class="post__meta">{{ with .Params.author }}{{ . }} · {{ end }}{{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>
+  </header>
+  <div class="post__body">
+    {{ .Content }}
+  </div>
+  <footer class="post__foot">
+    <a class="post__back" href="{{ "/" | relURL }}">← Back to {{ .Site.Title }}</a>
+  </footer>
+</article>
+{{ end }}

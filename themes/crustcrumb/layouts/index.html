@@ -1,0 +1,32 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+{{ with $lead }}
+<section class="cc-hero">
+  <p class="cc-hero__no">Featured</p>
+  <h1 class="cc-hero__t"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+  <p class="cc-hero__s">{{ .Params.summary }}</p>
+  <a class="cc-hero__link" href="{{ .RelPermalink }}">Read the note</a>
+</section>
+{{ end }}
+
+{{ $top4 := after 1 $featured }}
+{{ with $top4 }}
+<section class="cc-sec">
+  <div class="cc-sec__h"><h2>Selected notes</h2><span class="ct">{{ len $posts }} in total</span></div>
+  <div class="cc-grid">
+    {{ range $i, $p := . }}
+    <article class="cc-card">
+      <span class="cc-card__idx">{{ printf "%02d" (add $i 2) }}</span>
+      <h3><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+      <p>{{ $p.Params.summary }}</p>
+      <span class="cc-card__date">{{ $p.Date.Format "02 Jan 2006" }}</span>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

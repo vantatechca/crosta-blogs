@@ -1,0 +1,31 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+{{ with $featured }}
+<section class="tales">
+  {{ range $i, $p := first 4 . }}
+  <article class="tale">
+    <div class="tale__no">{{ printf "%02d" (add $i 1) }}</div>
+    <div>
+      <h2 class="tale__t"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+      <p class="tale__s">{{ $p.Params.summary }}</p>
+      <p class="tale__meta">{{ $p.Date.Format "January 2006" }}</p>
+    </div>
+  </article>
+  {{ end }}
+</section>
+{{ end }}
+
+<section class="embers">
+  <p class="embers__h">More from the hearth</p>
+  {{ range first 8 $posts }}
+  <div class="ember-row">
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <span>{{ .Date.Format "Jan 2" }}</span>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

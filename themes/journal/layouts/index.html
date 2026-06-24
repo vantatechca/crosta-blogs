@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+{{ with $lead }}
+<article class="lead">
+  <p class="lead__kicker">The Lead Essay</p>
+  <h2 class="lead__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  {{ with .Params.summary }}<p class="lead__dek">{{ . }}</p>{{ end }}
+  <div class="lead__body">{{ .Summary }}<a class="lead__more" href="{{ .RelPermalink }}">Continue reading →</a></div>
+</article>
+{{ end }}
+
+{{ $rest := after 1 $featured }}
+{{ with $rest }}
+<section class="collection">
+  <p class="collection__label">From the Journal</p>
+  <div class="pair">
+    {{ range first 2 . }}
+    <div class="pair__item">
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Params.summary }}</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<section class="index">
+  <p class="collection__label">The Index</p>
+  {{ range first 10 $posts }}
+  <div class="index__row">
+    <span class="index__date">{{ .Date.Format "Jan 2, 2006" }}</span>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

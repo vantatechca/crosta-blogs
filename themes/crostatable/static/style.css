@@ -1,0 +1,46 @@
+
+:root{--bone:#f4efe4;--walnut:#2c2017;--gold:#a9853f;--soft:#8a7c6b;--line:#ddd3c2}
+*{box-sizing:border-box}
+body.t-crostatable{margin:0;background:var(--bone);color:var(--walnut);font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;line-height:1.65}
+a{color:inherit}
+.wrap{max-width:880px;margin:0 auto;padding:0 30px 110px}
+.site-head__inner{max-width:880px;margin:0 auto;padding:74px 30px 0;text-align:center}
+.ct-over{font-family:"Jost",sans-serif;font-weight:400;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.ct-word{display:block;font-weight:500;font-size:clamp(40px,7vw,76px);letter-spacing:.01em;text-decoration:none;line-height:1}
+.ct-tag{font-style:italic;color:var(--soft);font-size:21px;margin:14px 0 22px}
+.ct-orn{color:var(--gold);font-size:18px;letter-spacing:.4em}
+.site-foot__inner{max-width:880px;margin:0 auto;padding:40px 30px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:"Jost",sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+/* featured lead — plated */
+.ct-lead{text-align:center;max-width:600px;margin:60px auto 0}
+.ct-lead__c{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.ct-lead__t{font-weight:600;font-size:clamp(32px,5vw,50px);line-height:1.08;margin:.25em 0}
+.ct-lead__t a{text-decoration:none}
+.ct-lead__d{font-style:italic;color:var(--soft);font-size:21px}
+.ct-lead__more{font-family:"Jost",sans-serif;display:inline-block;margin-top:16px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px}
+/* menu list */
+.ct-menu{margin:72px 0 0}
+.ct-menu__h{text-align:center;font-family:"Jost",sans-serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
+.ct-menu__h::after{content:"";display:block;width:46px;height:1px;background:var(--gold);margin:14px auto 0}
+.ct-item{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:0 14px;padding:22px 0;border-bottom:1px solid var(--line)}
+.ct-item__lead{display:flex;align-items:baseline;gap:10px;min-width:0}
+.ct-item__t{font-weight:600;font-size:26px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ct-item__t a{text-decoration:none}
+.ct-item__dots{flex:1;border-bottom:1.5px dotted var(--line);transform:translateY(-5px);min-width:24px}
+.ct-item__date{font-family:"Jost",sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.ct-item__s{grid-column:1/-1;color:var(--soft);font-style:italic;font-size:18px;margin:4px 0 0}
+/* article */
+.post{max-width:640px;margin:60px auto 0;text-align:center}
+.post__eyebrow span{font-family:"Jost",sans-serif;color:var(--gold);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.post__title{font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.08;margin:.2em 0}
+.post__dek{font-style:italic;color:var(--soft);font-size:22px}
+.post__meta{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.post__body{margin-top:26px;text-align:left}
+.post__back{font-family:"Jost",sans-serif;display:inline-block;margin-top:40px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+.archive{max-width:700px;margin:56px auto 0;text-align:center}
+.archive__title{font-weight:600;font-size:44px}
+.archive__list{padding:0;text-align:left}
+.archive__item{list-style:none;padding:20px 0;border-bottom:1px solid var(--line)}
+.archive__name{font-weight:600;font-size:24px;display:block}
+.archive__date{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.archive__sum{color:var(--soft);font-style:italic;margin:.3em 0 0}
+@media(max-width:560px){.ct-item__t{white-space:normal}.ct-item__dots{display:none}}

@@ -1,0 +1,19 @@
+baseURL = "https://thedailyslice.co/"
+languageCode = "en-us"
+title = "The Daily Slice"
+theme = "dailyslice"
+themesDir = "../../themes"
+paginate = 8
+enableRobotsTXT = true
+
+[params]
+  tagline = "Fresh pizza news, served daily."
+  brand = "Pizzeria Crosta"
+  brandURL = "https://pizzeriacrosta.com/"
+  description = "Fresh pizza news, served daily."
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  tag = "tags"

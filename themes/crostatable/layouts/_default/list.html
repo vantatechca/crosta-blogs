@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="archive">
+  <h1 class="archive__title">{{ .Title }}</h1>
+  {{ with .Content }}<div class="archive__intro">{{ . }}</div>{{ end }}
+  <ul class="archive__list">
+    {{ range .Pages }}
+    <li class="archive__item">
+      <a href="{{ .RelPermalink }}">
+        <span class="archive__date">{{ .Date.Format "Jan 2, 2006" }}</span>
+        <span class="archive__name">{{ .Title }}</span>
+      </a>
+      {{ with .Params.summary }}<p class="archive__sum">{{ . }}</p>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+<section class="fd-diary">
+  {{ range $i, $p := first 8 $posts }}
+  <article class="fd-entry{{ if $p.Params.featured }} fd-entry--feat{{ end }}">
+    <p class="fd-entry__date">{{ $p.Date.Format "Monday, 2 January 2006" }}</p>
+    <h2 class="fd-entry__t"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+    <p class="fd-entry__d">{{ $p.Params.summary }}</p>
+    {{ if $p.Params.featured }}<p class="fd-entry__b">{{ $p.Summary }} <a class="fd-entry__more" href="{{ $p.RelPermalink }}">continue →</a></p>{{ end }}
+  </article>
+  {{ end }}
+</section>
+{{ end }}

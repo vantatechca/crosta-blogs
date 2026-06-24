@@ -1,0 +1,19 @@
+baseURL = "https://hotouttheoven.com/"
+languageCode = "en-us"
+title = "Hot Out the Oven"
+theme = "hotoven"
+themesDir = "../../themes"
+paginate = 8
+enableRobotsTXT = true
+
+[params]
+  tagline = "Fresh, fast, and a little bit cheesy. Pizza, the fun way."
+  brand = "Pizzeria Crosta"
+  brandURL = "https://pizzeriacrosta.com/"
+  description = "Fresh, fast, and a little bit cheesy. Pizza, the fun way."
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  tag = "tags"

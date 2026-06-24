@@ -1,0 +1,31 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+<section class="np-stack">
+  {{ range $i, $p := first 4 $featured }}
+  <article class="np-docket">
+    <div class="np-docket__bar">
+      <span class="np-docket__no">ORDER #{{ printf "%03d" (add $i 1) }}</span>
+      <span class="np-stamp">{{ if $p.Params.top }}FIRE{{ else }}ON THE PASS{{ end }}</span>
+    </div>
+    <h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+    <p>{{ $p.Params.summary }}</p>
+    <p class="np-docket__chk">{{ range $p.Params.tags }}<b>✓</b> {{ . }}&nbsp;&nbsp;{{ end }}· {{ $p.Date.Format "Mon Jan 2" }}</p>
+  </article>
+  {{ end }}
+</section>
+
+<section class="np-line">
+  <p class="np-line__h">// service log</p>
+  {{ range $i, $p := first 8 $posts }}
+  <div class="np-line__row">
+    <span class="n">{{ printf "%02d" (add $i 1) }}</span>
+    <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+    <span class="d">{{ $p.Date.Format "01/02" }}</span>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,36 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+<section class="ds-front">
+  <div class="ds-lead">
+    {{ with $lead }}
+    <p class="ds-lead__kicker">Top Story</p>
+    <h2 class="ds-lead__t"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <p class="ds-lead__d">{{ .Params.summary }}</p>
+    <p>{{ .Summary }}</p>
+    {{ end }}
+  </div>
+  <aside class="ds-side">
+    <p class="ds-side__h">Today's Headlines</p>
+    {{ range first 4 $top }}
+    <div class="ds-side__row"><a href="{{ .RelPermalink }}">{{ .Title }}</a><span>{{ .Date.Format "Jan 2" }}</span></div>
+    {{ end }}
+  </aside>
+</section>
+
+<section class="ds-more">
+  <p class="ds-more__h">More from the kitchen</p>
+  <div class="ds-grid">
+    {{ range first 6 $posts }}
+    <article class="ds-cell">
+      <span class="ds-cell__date">{{ .Date.Format "Jan 2" }}</span>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Params.summary }}</p>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+{{ with $lead }}
+<section class="ff-lead">
+  <p class="ff-lead__k">Feature</p>
+  <h2 class="ff-lead__t"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <p class="ff-lead__d">{{ .Params.summary }}</p>
+  <a class="ff-lead__more" href="{{ .RelPermalink }}">Read it →</a>
+</section>
+{{ end }}
+
+<section class="ff-rows">
+  {{ range $i, $p := after 1 $featured }}
+  <article class="ff-row">
+    <div class="ff-row__no">{{ printf "%02d" (add $i 2) }}</div>
+    <div>
+      <h3 class="ff-row__t"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+      <p class="ff-row__s">{{ $p.Params.summary }}</p>
+    </div>
+    <div class="ff-row__d">{{ $p.Date.Format "Jan 2006" }}</div>
+  </article>
+  {{ end }}
+</section>
+
+<div class="ff-spark"></div>
+<p class="ff-recent__h">Latest</p>
+{{ range first 6 $posts }}
+<div class="ff-recent__row"><a href="{{ .RelPermalink }}">{{ .Title }}</a><span>{{ .Date.Format "Jan 2" }}</span></div>
+{{ end }}
+{{ end }}

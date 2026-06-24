@@ -1,0 +1,19 @@
+baseURL = "https://stonovenstories.com/"
+languageCode = "en-us"
+title = "Stories from the Stone Oven"
+theme = "stoneoven"
+themesDir = "../../themes"
+paginate = 8
+enableRobotsTXT = true
+
+[params]
+  tagline = "Tales from the hearth — the people, the heat, the slow rise."
+  brand = "Pizzeria Crosta"
+  brandURL = "https://pizzeriacrosta.com/"
+  description = "Tales from the hearth — the people, the heat, the slow rise."
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  tag = "tags"

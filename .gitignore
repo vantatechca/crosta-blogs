@@ -1,0 +1,5 @@
+public/
+previews/
+__pycache__/
+hugo
+*.log

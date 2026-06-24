@@ -1,0 +1,48 @@
+
+:root{--paper:#fffdf5;--ink:#2a2018;--tomato:#ef4444;--basil:#16a34a;--cheese:#f4b740;--soft:#8d8275;--card:#ffffff}
+*{box-sizing:border-box}
+body.t-hotoven{margin:0;background:var(--paper);color:var(--ink);font-family:"Nunito",system-ui,sans-serif;font-size:17px;line-height:1.65}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px 90px}
+.site-head__inner{max-width:1080px;margin:0 auto;padding:64px 26px 0;text-align:center}
+.ho-word{display:inline-block;font-family:"Fredoka",system-ui;font-weight:700;font-size:clamp(38px,7vw,72px);letter-spacing:-.01em;text-decoration:none;color:var(--tomato);transform:rotate(-1.5deg)}
+.ho-tag{font-weight:600;color:var(--ink);font-size:19px;margin:12px 0 16px}
+.ho-timer{display:inline-block;background:var(--ink);color:#fff;font-family:"Fredoka",system-ui;font-weight:600;font-size:13px;letter-spacing:.08em;padding:7px 16px;border-radius:999px}
+.ho-timer::first-letter{color:var(--cheese)}
+.site-foot__inner{max-width:1080px;margin:0 auto;padding:38px 26px;border-top:3px dotted var(--cheese);display:flex;justify-content:space-between;color:var(--soft);font-weight:600;font-size:14px}
+/* hero card */
+.ho-hero{margin:46px 0 0;background:var(--ink);color:#fff;border-radius:26px;padding:46px;position:relative;overflow:hidden}
+.ho-hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,var(--cheese),transparent 70%);opacity:.35}
+.ho-hero__b{display:inline-block;background:var(--tomato);color:#fff;font-family:"Fredoka",system-ui;font-weight:600;font-size:12px;letter-spacing:.1em;padding:5px 14px;border-radius:999px;text-transform:uppercase}
+.ho-hero__t{font-family:"Fredoka",system-ui;font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.05;margin:.25em 0 .2em}
+.ho-hero__t a{text-decoration:none;color:#fff}
+.ho-hero__d{color:#e6dccb;font-size:19px;max-width:560px}
+.ho-hero__go{display:inline-block;margin-top:18px;background:var(--cheese);color:var(--ink);font-family:"Fredoka",system-ui;font-weight:600;padding:11px 22px;border-radius:999px;text-decoration:none}
+/* card grid */
+.ho-grid{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.ho-card{background:var(--card);border:2px solid var(--ink);border-radius:22px;padding:26px;box-shadow:5px 6px 0 var(--ink);transition:transform .15s}
+.ho-card:hover{transform:translate(-2px,-2px)}
+.ho-card:nth-child(3n+1){box-shadow:5px 6px 0 var(--tomato)}
+.ho-card:nth-child(3n+2){box-shadow:5px 6px 0 var(--basil)}
+.ho-card:nth-child(3n){box-shadow:5px 6px 0 var(--cheese)}
+.ho-card__tags{margin-bottom:10px}
+.ho-card__tags span{display:inline-block;font-family:"Fredoka",system-ui;font-weight:500;font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1.5px solid var(--ink);margin:0 5px 5px 0}
+.ho-card h3{font-family:"Fredoka",system-ui;font-weight:600;font-size:23px;line-height:1.15;margin:0 0 8px}
+.ho-card h3 a{text-decoration:none}
+.ho-card p{margin:0;color:#4a4036;font-size:15.5px}
+.ho-card__date{display:block;margin-top:14px;font-weight:700;color:var(--soft);font-size:13px}
+/* article */
+.post{max-width:680px;margin:46px auto 0;background:var(--card);border:2px solid var(--ink);border-radius:24px;padding:38px;box-shadow:6px 7px 0 var(--cheese)}
+.post__eyebrow span{display:inline-block;background:var(--basil);color:#fff;font-family:"Fredoka",system-ui;font-size:11px;letter-spacing:.06em;padding:3px 10px;border-radius:999px;text-transform:uppercase;margin-right:5px}
+.post__title{font-family:"Fredoka",system-ui;font-weight:700;font-size:clamp(28px,4.6vw,42px);line-height:1.1;margin:.3em 0}
+.post__dek{color:var(--soft);font-weight:600;font-size:19px}
+.post__meta{color:var(--soft);font-weight:700;font-size:13px}
+.post__body{margin-top:22px}
+.post__back{display:inline-block;margin-top:30px;background:var(--ink);color:#fff;font-family:"Fredoka",system-ui;padding:10px 20px;border-radius:999px;text-decoration:none}
+.archive{max-width:760px;margin:46px auto 0}
+.archive__title{font-family:"Fredoka",system-ui;font-weight:700;font-size:38px;color:var(--tomato)}
+.archive__list{padding:0}
+.archive__item{list-style:none;background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:18px 22px;margin:0 0 14px;box-shadow:4px 5px 0 var(--cheese)}
+.archive__name{font-family:"Fredoka",system-ui;font-weight:600;font-size:21px;display:block}
+.archive__date{font-weight:700;color:var(--soft);font-size:13px}
+.archive__sum{color:#4a4036;margin:.3em 0 0}

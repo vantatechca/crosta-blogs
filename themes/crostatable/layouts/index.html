@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+{{ with $lead }}
+<section class="ct-lead">
+  <p class="ct-lead__c">Chef's Selection</p>
+  <h2 class="ct-lead__t"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <p class="ct-lead__d">{{ .Params.summary }}</p>
+  <a class="ct-lead__more" href="{{ .RelPermalink }}">Read</a>
+</section>
+{{ end }}
+
+<section class="ct-menu">
+  <p class="ct-menu__h">The Table</p>
+  {{ range first 8 $posts }}
+  <article class="ct-item">
+    <div class="ct-item__lead">
+      <span class="ct-item__t"><a href="{{ .RelPermalink }}">{{ .Title }}</a></span>
+      <span class="ct-item__dots"></span>
+    </div>
+    <span class="ct-item__date">{{ .Date.Format "Jan 2" }}</span>
+    <p class="ct-item__s">{{ .Params.summary }}</p>
+  </article>
+  {{ end }}
+</section>
+{{ end }}

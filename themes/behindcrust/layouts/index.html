@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := where $posts "Params.featured" true }}
+{{ $top := where $posts "Params.top" true }}
+{{ $lead := index $featured 0 }}
+
+<section class="bc-plates">
+  {{ with $lead }}
+  <article class="bc-plate bc-plate--lead">
+    <div class="bc-plate__cap"><span>PLATE 01</span><span><b>{{ .Date.Format "15:04" }}</b> · LEAD</span></div>
+    <div class="bc-plate__body">
+      <h2 class="bc-plate__t"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <p class="bc-plate__s">{{ .Summary }}</p>
+      <a class="bc-plate__more" href="{{ .RelPermalink }}">→ open the file</a>
+    </div>
+  </article>
+  {{ end }}
+  <div style="display:grid;gap:24px">
+  {{ range $i, $p := first 2 (after 1 $featured) }}
+    <article class="bc-plate">
+      <div class="bc-plate__cap"><span>PLATE {{ printf "%02d" (add $i 2) }}</span><span><b>{{ $p.Date.Format "Jan 2" }}</b></span></div>
+      <div class="bc-plate__body">
+        <h2 class="bc-plate__t"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+        <p class="bc-plate__s">{{ $p.Params.summary }}</p>
+      </div>
+    </article>
+  {{ end }}
+  </div>
+</section>
+
+<section class="bc-sheet">
+  <p class="bc-sheet__h">// contact sheet — all frames</p>
+  <div class="bc-frames">
+    {{ range $i, $p := first 6 $posts }}
+    <article class="bc-frame">
+      <span class="bc-frame__n">FRAME {{ printf "%02d" (add $i 1) }}</span>
+      <h3><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+      <span class="bc-frame__d">{{ $p.Date.Format "2006.01.02" }}</span>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
