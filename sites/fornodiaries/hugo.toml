@@ -5,6 +5,11 @@ theme = "fornodiaries"
 themesDir = "../../themes"
 paginate = 8
 enableRobotsTXT = true
+# Relative asset + internal links so CSS/links resolve whether the site is served
+# at a domain root, a subpath, an onrender.com URL, or opened as a file. Prevents
+# the "/style.css 404 -> unstyled page" failure.
+relativeURLs = true
+canonifyURLs = false
 
 [params]
   tagline = "A running diary from the oven — entry by entry."
